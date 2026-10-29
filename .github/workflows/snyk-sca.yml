@@ -1,0 +1,37 @@
+name: DevSecOps — Snyk SCA
+
+on:
+  push:
+    branches: [master, main, develop]
+  pull_request:
+    branches: [master, main]
+  workflow_dispatch:
+
+jobs:
+  snyk-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Juice Shop v20 butuh Node 22 - 26 (lihat "engines" di package.json)
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # --ignore-scripts: postinstall Juice Shop ikut build frontend Angular,
+      # tidak diperlukan untuk SCA karena Snyk cukup membaca package-lock.json
+      - run: npm ci --ignore-scripts
+
+      - name: Snyk SCA Scan
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+
+      - name: Snyk Monitor
+        run: npx snyk monitor --project-name=juice-shop
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
