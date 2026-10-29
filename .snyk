@@ -1,0 +1,72 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.1
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-JS-DECOMPRESS-20254116:
+    - '*':
+        reason: >-
+          download dipanggil tanpa opsi extract sehingga kode decompress tidak
+          pernah dieksekusi; belum ada versi perbaikan dari upstream. Rencana:
+          ganti download dengan fetch bawaan Node.
+        expires: 2027-01-31T00:00:00.000Z
+        created: 2026-10-29T10:05:05.999Z
+  SNYK-JS-DECOMPRESS-17937347:
+    - '*':
+        reason: >-
+          download dipanggil tanpa opsi extract sehingga kode decompress tidak
+          pernah dieksekusi; belum ada versi perbaikan dari upstream. Rencana:
+          ganti download dengan fetch bawaan Node.
+        expires: 2027-01-31T00:00:00.000Z
+        created: 2026-10-29T10:05:10.329Z
+  SNYK-JS-DECOMPRESS-17874437:
+    - '*':
+        reason: >-
+          download dipanggil tanpa opsi extract sehingga kode decompress tidak
+          pernah dieksekusi; belum ada versi perbaikan dari upstream. Rencana:
+          ganti download dengan fetch bawaan Node.
+        expires: 2027-01-31T00:00:00.000Z
+        created: 2026-10-29T10:05:14.430Z
+  SNYK-JS-HTTPCACHESEMANTICS-19964064:
+    - '*':
+        reason: >-
+          Hanya dipakai got@8 di dalam download untuk mengambil gambar dari URL
+          konfigurasi toko (dikontrol operator, bukan input user); belum ada
+          versi perbaikan yang kompatibel. Rencana: ganti download dengan fetch
+          bawaan Node.
+        expires: 2027-01-31T00:00:00.000Z
+        created: 2026-10-29T10:05:18.531Z
+  SNYK-JS-HTTPCACHESEMANTICS-19964068:
+    - '*':
+        reason: >-
+          Hanya dipakai got@8 di dalam download untuk mengambil gambar dari URL
+          konfigurasi toko (dikontrol operator, bukan input user); belum ada
+          versi perbaikan yang kompatibel. Rencana: ganti download dengan fetch
+          bawaan Node.
+        expires: 2027-01-31T00:00:00.000Z
+        created: 2026-10-29T10:05:22.554Z
+  SNYK-JS-DECODEURICOMPONENT-21802484:
+    - '*':
+        reason: >-
+          Hanya dipakai got@8 di dalam download untuk mengambil gambar dari URL
+          konfigurasi toko (dikontrol operator, bukan input user); belum ada
+          versi perbaikan yang kompatibel. Rencana: ganti download dengan fetch
+          bawaan Node.
+        expires: 2027-01-31T00:00:00.000Z
+        created: 2026-10-29T10:05:26.617Z
+  SNYK-JS-PICOMATCH-21248802:
+    - '*':
+        reason: >-
+          Dependensi build-time node-gyp saat kompilasi sqlite3, tidak ikut
+          berjalan di runtime aplikasi; belum ada versi perbaikan.
+        expires: 2027-01-31T00:00:00.000Z
+        created: 2026-10-29T10:05:30.708Z
+  SNYK-JS-MARSDB-480405:
+    - '*':
+        reason: >-
+          Tidak ada versi perbaikan (marsdb sudah tidak dirawat). Dipakai Juice
+          Shop sebagai database NoSQL in-memory untuk challenge NoSQL injection
+          yang memang disengaja. Rencana: migrasi ke database yang masih
+          dirawat.
+        expires: 2027-01-31T00:00:00.000Z
+        created: 2026-10-29T10:05:35.032Z
+patch: {}
